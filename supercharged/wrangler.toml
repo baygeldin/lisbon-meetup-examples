@@ -1,0 +1,17 @@
+name = "homepage"
+main = "src/index.ts"
+compatibility_date = "2022-12-10"
+
+account_id = "2e0258af42126ccd8d32e66f4e05dd67"
+
+routes = [
+  { pattern = "https://www.baygeldin.name/*", zone_name = "baygeldin.name" },
+]
+
+workers_dev = false
+
+[dev]
+host = "www.baygeldin.name"
+
+[vars]
+HOMEPAGE_URL = "https://www.baygeldin.name"

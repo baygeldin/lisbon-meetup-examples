@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": ["esnext"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "types": [
+      "@cloudflare/workers-types",
+      "jest-environment-miniflare/globals",
+      "jest"
+    ],
+    "baseUrl": "src",
+    "paths": {
+      "test/*": ["../test/*"]
+    },
+    "strict": true,
+    "noEmit": true
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "**/*.ts",
+  ]
+}

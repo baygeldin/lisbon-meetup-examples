@@ -1,0 +1,12 @@
+# Yarn & NPM
+node_modules
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+!package-lock.json
+
+# Wrangler
+.wrangler
