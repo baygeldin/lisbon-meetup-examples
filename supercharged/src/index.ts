@@ -6,9 +6,10 @@ import hello from 'handlers/hello'
 
 declare global {
   type Env = {
-    HOMEPAGE_URL: string
-    DEPLOY_TIMESTAMP: string
     KV: KVNamespace
+    DEPLOY_TIMESTAMP: string
+    HOMEPAGE_URL: string
+    HELLO_API_URL: string
   }
 }
 
