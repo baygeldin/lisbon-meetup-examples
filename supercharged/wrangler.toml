@@ -1,6 +1,6 @@
 name = "homepage"
 main = "src/index.ts"
-compatibility_date = "2022-12-10"
+compatibility_date = "2023-08-14"
 
 account_id = "2e0258af42126ccd8d32e66f4e05dd67"
 
@@ -8,10 +8,16 @@ routes = [
   { pattern = "https://www.baygeldin.name/*", zone_name = "baygeldin.name" },
 ]
 
+kv_namespaces = [
+  { binding = "KV", id = "5bef35a30f244edda0f4d485d223a58b", preview_id = "922f2af017a14de09ad375fe3a62c7e7" }
+]
+
 workers_dev = false
 
 [dev]
 host = "www.baygeldin.name"
+local_protocol = "https"
 
 [vars]
 HOMEPAGE_URL = "https://www.baygeldin.name"
+HELLO_API_URL = "https://hellosalut.stefanbohacek.dev"

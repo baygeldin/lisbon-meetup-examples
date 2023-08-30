@@ -7,6 +7,7 @@ export const fetchMock = getMiniflareFetchMock()
 
 export const origins: string[] = [
   env.HOMEPAGE_URL,
+  env.HELLO_API_URL,
 ]
 
 export const mockClients = origins.reduce((acc, origin) => {

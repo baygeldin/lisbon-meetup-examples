@@ -6,4 +6,5 @@ account_id = "2e0258af42126ccd8d32e66f4e05dd67"
 
 routes = [
   { pattern = "https://www.baygeldin.name/*", zone_name = "baygeldin.name" },
+  #{ pattern = "https://www.baygeldin.name/hello", zone_name = "baygeldin.name" },
 ]

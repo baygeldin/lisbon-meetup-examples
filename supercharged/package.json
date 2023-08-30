@@ -1,12 +1,15 @@
 {
-  "name": "cloudflare-worker-template",
+  "name": "homepage",
   "packageManager": "yarn@3.3.0",
   "version": "0.1.0",
   "engines": {
     "node": "18.x"
   },
   "dependencies": {
-    "hono": "^3.5.0"
+    "fullwidth": "^1.2.0",
+    "hono": "^3.5.0",
+    "html-entities": "^2.4.0",
+    "transliteration": "^2.3.5"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20230404.0",
@@ -26,6 +29,6 @@
     "deploy": "wrangler deploy --var \"DEPLOY_TIMESTAMP:$(date -u)\"",
     "test": "jest",
     "tail": "wrangler tail",
-    "clear-cache": "rm -rf ./wrangler/state"
+    "clear-cache": "rm -rf .wrangler/state"
   }
 }

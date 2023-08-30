@@ -7,6 +7,7 @@ const config: Config = {
     bindings: {
       DEPLOY_TIMESTAMP: new Date(0).toUTCString(),
       HOMEPAGE_URL: 'https://example.com',
+      HELLO_API_URL: 'https://hello.com',
     },
     kvNamespaces: ['KV'],
   },

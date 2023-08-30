@@ -11,11 +11,21 @@ describe('worker', () => {
       const body = 'Hello World!'
 
       expect({ url: `${env.HOMEPAGE_URL}${path}` })
-        .toBeFetchedAndReturnTimes({ body }, 1)
+        .toBeFetchedAndReturn({ body })
 
       const res = await request(path)
 
       expect(await res.text()).toBe(body)
+    })
+  })
+
+  describe('when accessing /geo', () => {
+    it('returns geolocation data', async () => {
+      const path = '/geo'
+
+      const res = await request(path)
+
+      expect(await res.text()).toContain('Geolocation: Hello World!')
     })
   })
 })
