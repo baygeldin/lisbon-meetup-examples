@@ -13,47 +13,49 @@ afterEach(() => {
 // This is just a syntax sugar to make tests more readable.
 // The actual assertion happens in the `afterEach` above.
 expect.extend({
-  toBeFetched(received: MockRequest): jest.CustomMatcherResult {
+  toBeFetched (received: MockRequest): jest.CustomMatcherResult {
     mockRequest(received, {}, 1)
 
     return {
       pass: true,
-      message: () => '',
+      message: () => ''
     }
   },
-  toBeFetchedAndReturn(received: MockRequest, response: MockResponse): jest.CustomMatcherResult {
+  toBeFetchedAndReturn (received: MockRequest, response: MockResponse): jest.CustomMatcherResult {
     mockRequest(received, response, 1)
 
     return {
       pass: true,
-      message: () => '',
+      message: () => ''
     }
   },
-  toBeFetchedTimes(received: MockRequest, times: number): jest.CustomMatcherResult {
+  toBeFetchedTimes (received: MockRequest, times: number): jest.CustomMatcherResult {
     mockRequest(received, {}, times)
 
     return {
       pass: true,
-      message: () => '',
+      message: () => ''
     }
   },
-  toBeFetchedAndReturnTimes(received: MockRequest, response: MockResponse, times: number): jest.CustomMatcherResult {
+  toBeFetchedAndReturnTimes (received: MockRequest, response: MockResponse, times: number): jest.CustomMatcherResult {
     mockRequest(received, response, times)
 
     return {
       pass: true,
-      message: () => '',
+      message: () => ''
     }
-  },
+  }
 })
 
 declare global {
+  // eslint-disable-next-line
   namespace jest {
+    // eslint-disable-next-line
     interface Matchers<R> {
-      toBeFetched(): CustomMatcherResult
-      toBeFetchedAndReturn(response: MockResponse): CustomMatcherResult
-      toBeFetchedTimes(times: number): CustomMatcherResult
-      toBeFetchedAndReturnTimes(response: MockResponse, times: number): CustomMatcherResult
+      toBeFetched: () => CustomMatcherResult
+      toBeFetchedAndReturn: (response: MockResponse) => CustomMatcherResult
+      toBeFetchedTimes: (times: number) => CustomMatcherResult
+      toBeFetchedAndReturnTimes: (response: MockResponse, times: number) => CustomMatcherResult
     }
   }
 }

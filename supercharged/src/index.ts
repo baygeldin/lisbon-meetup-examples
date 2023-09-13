@@ -5,6 +5,7 @@ import geo from 'handlers/geo'
 import hello from 'handlers/hello'
 
 declare global {
+  // eslint-disable-next-line
   type Env = {
     KV: KVNamespace
     DEPLOY_TIMESTAMP: string
@@ -21,8 +22,8 @@ app.get('/geo', geo())
 
 app.get('/', hello())
 
-app.get('*', (ctx) => {
-  return fetch(ctx.req.raw)
+app.get('*', async (ctx) => {
+  return await fetch(ctx.req.raw)
 })
 
 export default app

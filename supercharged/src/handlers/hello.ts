@@ -9,22 +9,26 @@ interface HelloResponse {
   hello: string
 }
 
-export default function chat(): Handler {
+export default function chat (): Handler {
   return async (ctx) => {
+    const env: Env = ctx.env
+
     const rewriter = new HTMLRewriter().on('span#caption', {
-      async element(element) {
-        const code = (ctx.req.raw.cf?.country as string) || 'GB'
+      async element (element) {
+        // eslint-disable-next-line
+        const code = (ctx.req.raw.cf?.country || 'GB') as string
 
         const kv = ctx.env.KV
         const kvKey = `${code}-hello`
 
-        let hello = await kv.get(kvKey)
+        // eslint-disable-next-line
+        let hello = (await kv.get(kvKey) as string) || ''
 
-        if (!hello) {
-          const url = new URL(`${ctx.env.HELLO_API_URL}/?cc=${code}`)
+        if (hello === '') {
+          const url = new URL(`${env.HELLO_API_URL}/?cc=${code}`)
 
           const res = await fetch(url)
-          const data = await res.json() as HelloResponse
+          const data: HelloResponse = await res.json()
 
           hello = decode(data.hello).toLowerCase()
 
@@ -40,8 +44,8 @@ export default function chat(): Handler {
 
     const res = await fetch(ctx.req.raw, {
       headers: {
-        'Content-Type': 'text/html;charset=UTF-8',
-      },
+        'Content-Type': 'text/html;charset=UTF-8'
+      }
     })
 
     return rewriter.transform(res)

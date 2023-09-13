@@ -7,20 +7,19 @@ const config: Config = {
     bindings: {
       DEPLOY_TIMESTAMP: new Date(0).toUTCString(),
       HOMEPAGE_URL: 'https://example.com',
-      HELLO_API_URL: 'https://hello.com',
+      HELLO_API_URL: 'https://hello.com'
     },
-    kvNamespaces: ['KV'],
+    kvNamespaces: ['KV']
   },
   globals: {
-    appUrl: '',
+    appUrl: ''
   },
   collectCoverageFrom: ['src/**/*.{ts}'],
   moduleDirectories: ['node_modules', 'src'],
   moduleNameMapper: {
     'test/(.*)': '<rootDir>/test/$1'
   },
-  setupFilesAfterEnv: ['<rootDir>/test/setup.ts'],
+  setupFilesAfterEnv: ['<rootDir>/test/setup.ts']
 }
 
 export default config
-
