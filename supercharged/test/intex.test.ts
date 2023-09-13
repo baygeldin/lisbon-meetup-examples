@@ -30,6 +30,8 @@ describe('worker', () => {
   })
 
   describe('when accessing /', () => {
+    // FIXME: currently this fails due to a bug in `html-rewriter-wasm`:
+    // "recursive use of an object detected which would lead to unsafe aliasing in rust".
     xit('returns a translated hello world message', async () => {
       const path = '/'
       const body = '<html><span id="caption"></span></html>'
@@ -43,10 +45,14 @@ describe('worker', () => {
         .toBeFetchedAndReturn({ body: '{"code":"gb","hello":"Hello"}' })
 
       const res = await request(path)
-      const anotherRes = await request(path)
+      const html = await res.clone().text()
 
-      expect(await res.text()).toContain('ｈｅｌｌｏ')
-      expect(await anotherRes.text()).toContain('ｈｅｌｌｏ')
+      expect(html).toContain('ｈｅｌｌｏ')
+
+      const anotherRes = await request(path)
+      const anotherHtml = await anotherRes.clone().text()
+
+      expect(anotherHtml).toContain('ｈｅｌｌｏ')
     })
   })
 })
